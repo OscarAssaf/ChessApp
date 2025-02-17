@@ -1,0 +1,17 @@
+//
+//  ChessAppTests.swift
+//  ChessAppTests
+//
+//  Created by Oscar on 2025-02-17.
+//
+
+import Testing
+@testable import ChessApp
+
+struct ChessAppTests {
+
+    @Test func example() async throws {
+        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    }
+
+}
