@@ -36,11 +36,13 @@ struct ChessBoard {
         }
     }
     
-    mutating func movePiece(from: (Int, Int), to: (Int, Int)) -> Bool {
-        guard let piece = board[from.0][from.1] else { return false }
-        board[to.0][to.1] = ChessPiece(type: piece.type, color: piece.color, position: to)
-        board[from.0][from.1] = nil
-        return true
-    }
+    mutating func movePiece(from start: (row: Int, col: Int), to end: (row: Int, col: Int)) {
+            board[end.row][end.col] = board[start.row][start.col]
+            board[start.row][start.col] = nil
+        }
+    		
+    func getPiece(at position: (row: Int, col: Int)) -> ChessPiece? {
+            return board[position.row][position.col]
+        }
 }
 
