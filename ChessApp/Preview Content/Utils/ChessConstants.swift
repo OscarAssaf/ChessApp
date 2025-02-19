@@ -13,7 +13,7 @@ enum ChessConstants {
         .knight: "♘",
         .bishop: "♗",
         .rook: "♖",
-        .queen: "♕",	
+        .queen: "♕",
         .king: "♔"
     ]
 }

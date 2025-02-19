@@ -9,22 +9,24 @@ import Foundation
 
 struct ChessBoard {
     var board: [[ChessPiece?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
-    
+    var currentTurn: PieceColor = .white // make so white move first
+
     init() {
         setupBoard()
+        printBoardSetup() // print board status
     }
     
     private mutating func setupBoard() {
-       
+ 
         board = Array(repeating: Array(repeating: nil, count: 8), count: 8)
 
-        
+
         for col in 0..<8 {
             board[1][col] = ChessPiece(type: .pawn, color: .black, position: (1, col))
             board[6][col] = ChessPiece(type: .pawn, color: .white, position: (6, col))
         }
-        
-       
+
+      
         placeMajorPieces(row: 0, color: .black)
         placeMajorPieces(row: 7, color: .white)
     }
@@ -35,14 +37,47 @@ struct ChessBoard {
             board[row][col] = ChessPiece(type: pieceOrder[col], color: color, position: (row, col))
         }
     }
-    
-    mutating func movePiece(from start: (row: Int, col: Int), to end: (row: Int, col: Int)) {
-            board[end.row][end.col] = board[start.row][start.col]
-            board[start.row][start.col] = nil
-        }
-    		
-    func getPiece(at position: (row: Int, col: Int)) -> ChessPiece? {
-            return board[position.row][position.col]
-        }
-}
 
+    mutating func movePiece(from: (Int, Int), to: (Int, Int)) -> Bool {
+        // Check u press a piece
+        guard let piece = board[from.0][from.1] else {
+            print("No piece at the selected position.")
+            return false
+        }
+
+        // Correct player logic
+        if piece.color != currentTurn {
+            print("Wrong turn! It's \(currentTurn) turn.")
+            return false
+        }
+
+        print("Trying to move \(piece.type) (\(piece.color)) from \(from) to \(to)") // Debugging
+
+        // Move piece
+        board[to.0][to.1] = ChessPiece(type: piece.type, color: piece.color, position: to)
+        board[from.0][from.1] = nil
+
+        //switch turns
+        currentTurn = (currentTurn == .white) ? .black : .white
+        print("Turn changed to \(currentTurn).")
+
+        return true
+    }
+
+    private func printBoardSetup() {
+        print("Initial Chess Board Setup:")
+        for row in (0..<8).reversed() {
+            var rowString = ""
+            for col in 0..<8 {
+                if let piece = board[row][col] {
+                
+                    rowString += "\(piece.color == .black ? "B" : "W")\(piece.type.rawValue.prefix(1)) "
+                } else {
+                    rowString += "-- "
+                }
+            }
+            print(rowString)
+        }
+    }
+
+}

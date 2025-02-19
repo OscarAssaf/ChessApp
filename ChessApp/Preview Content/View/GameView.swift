@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct GameView: View {
@@ -14,6 +13,7 @@ struct GameView: View {
 
     var body: some View {
         VStack {
+
             Text("Turn: \(viewModel.currentTurn == .white ? "White" : "Black")")
                 .font(.headline)
             
@@ -21,3 +21,4 @@ struct GameView: View {
         }
     }
 }
+

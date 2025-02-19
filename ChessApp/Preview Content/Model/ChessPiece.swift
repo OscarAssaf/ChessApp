@@ -18,5 +18,12 @@ enum PieceColor {
 struct ChessPiece {
     let type: PieceType
     let color: PieceColor
-    var position: (Int, Int) // rad, columnen
+    var position: (Int, Int)
+
+    init(type: PieceType, color: PieceColor, position: (Int, Int)) {
+        self.type = type
+        self.color = color
+        self.position = position
+        print("Created piece: \(type.rawValue) - \(color == .white ? "White" : "Black") at \(position)")
+    }
 }
