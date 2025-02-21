@@ -27,7 +27,7 @@ struct ChessBoardView: View {
                             ZStack {
                           
                                 Rectangle()
-                                    .fill((row + col) % 2 == 0 ? Color.white : Color.gray)
+                                    .fill((row + col) % 2 == 0 ? Color.brown : Color.gray)
                                     .frame(width: squareSize, height: squareSize)
                                     .border(isSelected(position) ? Color.blue : Color.clear, width: 3) // show selected
                                     .onTapGesture {

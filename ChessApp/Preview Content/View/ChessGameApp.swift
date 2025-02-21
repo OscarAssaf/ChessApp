@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftData
 import SwiftUI
 
 
@@ -15,7 +15,7 @@ import SwiftUI
 struct ChessGameApp: App {
     var body: some Scene {
         WindowGroup {
-            GameView() 
+            ContentView()
         }
     }
 }

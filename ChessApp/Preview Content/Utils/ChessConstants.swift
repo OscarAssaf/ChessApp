@@ -10,10 +10,10 @@ import Foundation
 enum ChessConstants {
     static let pieceSymbols: [PieceType: String] = [
         .pawn: "♙",
-        .knight: "♘",
-        .bishop: "♗",
-        .rook: "♖",
-        .queen: "♕",
-        .king: "♔"
+        .knight: "♞",
+        .bishop: "♝",
+        .rook: "♜",
+        .queen: "♛",
+        .king: "♚"
     ]
 }
