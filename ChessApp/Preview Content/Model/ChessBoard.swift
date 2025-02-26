@@ -71,9 +71,19 @@ struct ChessBoard {
 
 
     // Helps to check if empty
+
     func isEmpty(at position: (Int, Int)) -> Bool {
-        return board[position.0][position.1] == nil
+        let (row, col) = position
+
+        // valid ranges
+        guard row >= 0, row < 8, col >= 0, col < 8 else {
+            print("Error: Attempted to access out-of-bounds position \(position)")
+            return false
+        }
+
+        return board[row][col] == nil
     }
+
 
     // Helps to check if square contains an opp
     func hasOpponentPiece(at position: (Int, Int), for color: PieceColor) -> Bool {
