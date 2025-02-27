@@ -36,6 +36,13 @@ struct ChessPiece {
             return isValidKnightMove(to: newPosition, board: board)
         case .bishop:
             return isValidBishopMove(to: newPosition, board: board)
+        case .rook:
+            return isValidRookMove(to: newPosition, board: board)
+        case .queen:
+            return isValidQueenMove(to: newPosition, board: board)
+        case .king:
+            return isValidKingMove(to: newPosition, board: board)
+    
         default:
             return false // REMEMBER TO ADD OTHER PIECES HERE LATER!!!!!!!!!!
         }
@@ -123,13 +130,86 @@ struct ChessPiece {
             currentCol += colStep
         }
 
-        // Check if end point is occupied or free
+        // Check if occupied or free
         if let targetPiece = board.board[endRow][endCol], targetPiece.color == color {
             print("Invalid move: Bishop cannot capture own piece.")
             return false
         }
+        
+        return true
+    }
+    
+    // Rook logic
+    private func isValidRookMove(to newPosition: (Int, Int), board: ChessBoard) -> Bool {
+        let (startRow, startCol) = position
+        let (endRow, endCol) = newPosition
+
+        // Movement
+        if startRow != endRow && startCol != endCol {
+            print("Invalid move: Rook must move in a straight line.")
+            return false
+        }
+
+        // Direction
+        let rowStep = (endRow > startRow) ? 1 : (endRow < startRow) ? -1 : 0
+        let colStep = (endCol > startCol) ? 1 : (endCol < startCol) ? -1 : 0
+
+        var currentRow = startRow + rowStep
+        var currentCol = startCol + colStep
+
+        // Check obstacle
+        while currentRow != endRow || currentCol != endCol {
+            if !board.isEmpty(at: (currentRow, currentCol)) {
+                print("Invalid move: Rook's path is blocked.")
+                return false
+            }
+            currentRow += rowStep
+            currentCol += colStep
+        }
+
+        // Check if empty or not
+        if let targetPiece = board.board[endRow][endCol] {
+            if targetPiece.color == color {
+                print("Invalid move: Rook cannot capture own piece.")
+                return false
+            }
+        }
 
         return true
     }
+    
+    // Queen logic
+    private func isValidQueenMove(to newPosition: (Int, Int), board: ChessBoard) -> Bool {
+        // Move like a bishop or a rook so we just grab them >D
+        return isValidRookMove(to: newPosition, board: board) || isValidBishopMove(to: newPosition, board: board)
+    }
+    
+    
+    
+    
+    // King logic aka the weakest piece in the game for some reason lol
+    private func isValidKingMove(to newPosition: (Int, Int), board: ChessBoard) -> Bool {
+        let (startRow, startCol) = position
+        let (endRow, endCol) = newPosition
+
+        // King move lgoci
+        if abs(startRow - endRow) > 1 || abs(startCol - endCol) > 1 {
+            print("Invalid move: King can only move one square in any direction.")
+            return false
+        }
+
+        // Occupied or free
+        if let targetPiece = board.board[endRow][endCol] {
+            if targetPiece.color == color {
+                print("Invalid move: King cannot capture own piece.")
+                return false
+            }
+        }
+
+        return true
+    }
+
+
+
 
 }
