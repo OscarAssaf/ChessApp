@@ -44,7 +44,7 @@ struct ChessPiece {
             return isValidKingMove(to: newPosition, board: board)
     
         default:
-            return false // REMEMBER TO ADD OTHER PIECES HERE LATER!!!!!!!!!!
+            return false 
         }
     }
 
