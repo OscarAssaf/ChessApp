@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct ChessBoardView: View {
     @Bindable var viewModel: ChessGameViewModel
     
@@ -25,16 +26,14 @@ struct ChessBoardView: View {
                             let piece = viewModel.getPiece(at: position)
                             
                             ZStack {
-                          
                                 Rectangle()
                                     .fill((row + col) % 2 == 0 ? Color.brown : Color.gray)
                                     .frame(width: squareSize, height: squareSize)
-                                    .border(isSelected(position) ? Color.blue : Color.clear, width: 3) // show selected
+                                    .border(isSelected(position) ? Color.blue : Color.clear, width: 3)
                                     .onTapGesture {
                                         handleTap(at: position, piece: piece)
                                     }
 
-                                // Display the piece
                                 if let piece = piece {
                                     Text(ChessConstants.pieceSymbols[piece.type] ?? "?")
                                         .font(.system(size: squareSize * 0.7))
@@ -46,25 +45,31 @@ struct ChessBoardView: View {
                 }
             }
         }
+        .alert("Checkmate!", isPresented: $viewModel.showCheckmateAlert) {
+            Button("OK") {
+                viewModel.resetGame() // Reset the game
+            }
+        } message: {
+            if let winner = viewModel.checkmateWinner {
+                Text("\(winner == .white ? "White" : "Black") wins!")
+            }
+        }
     }
     
     private func isSelected(_ position: (Int, Int)) -> Bool {
-    
         if let selectedPosition = selectedPiecePosition {
             return selectedPosition == position
         }
         return false
     }
 
-    
-    // tap to move
     private func handleTap(at position: (Int, Int), piece: ChessPiece?) {
         if let selectedPiece = selectedPiecePosition {
-          
-            viewModel.movePiece(from: selectedPiece, to: position)
+            // Attempt to move the piece
+            _ = viewModel.movePiece(from: selectedPiece, to: position)
             selectedPiecePosition = nil
         } else {
-         
+            // Select the piece
             if piece != nil {
                 selectedPiecePosition = position
             }

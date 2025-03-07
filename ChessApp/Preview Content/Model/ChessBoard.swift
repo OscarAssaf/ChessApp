@@ -55,7 +55,7 @@ struct ChessBoard {
             board[to.0][to.1] = ChessPiece(type: piece.type, color: piece.color, position: to)
             board[from.0][from.1] = nil
 
-            // Check if move results in own king being in check
+            // Check if move makes the king become checked
             if isKingInCheck(for: currentTurn) {
                 print("Move is illegal: Your king would be in check.")
                 // Undo move
@@ -98,6 +98,7 @@ struct ChessBoard {
             for col in 0..<8 {
                 if let piece = board[row][col], piece.color != color {
                     if piece.canMove(to: kingPosition, board: self) {
+                        print("\(color) king is in check.")
                         return true
                     }
                 }
@@ -108,13 +109,15 @@ struct ChessBoard {
 
     mutating func isCheckmate(for color: PieceColor) -> Bool {
         if !isKingInCheck(for: color) {
+            print("No checkmate: King is not in check.")
             return false
         }
 
         let kingPosition = findKing(for: color)
 
-        // 1. Check if the king can move out of check
+        // 1. can we move out
         if canKingEscape(from: kingPosition, color: color) {
+            print("No checkmate: King can escape.")
             return false
         }
 
@@ -128,23 +131,39 @@ struct ChessBoard {
             }
         }
 
-        // 3. If multiple attackers, only king movement can save it (already checked)
+        // 3. If multiple attackers, only king movement can save it
         if attackingPieces.count > 1 {
+            print("Checkmate detected: Multiple attackers.")
             return true
         }
 
         let (attacker, attackerPosition) = attackingPieces.first!
 
-        // 4. Can we capture the attacker?
+        // 4. Can we capture
         for row in 0..<8 {
             for col in 0..<8 {
                 if let piece = board[row][col], piece.color == color, piece.canMove(to: attackerPosition, board: self) {
-                    return false // Attacker can be captured
+                    // Simulate capturing
+                    let originalPiece = board[attackerPosition.0][attackerPosition.1]
+                    board[attackerPosition.0][attackerPosition.1] = piece
+                    board[row][col] = nil
+
+                    // Is king still in check after attacking the opp
+                    let stillInCheck = isKingInCheck(for: color)
+
+                    // Undo the move
+                    board[row][col] = piece
+                    board[attackerPosition.0][attackerPosition.1] = originalPiece
+
+                    if !stillInCheck {
+                        print("No checkmate: Attacker can be captured.")
+                        return false // Attacker can be captured
+                    }
                 }
             }
         }
 
-        // 5. Can we block the attack? (Only relevant for rooks, bishops, queens)
+        // 5. Can we block
         if attacker.type == .rook || attacker.type == .bishop || attacker.type == .queen {
             let attackPath = getPathBetween(attackerPosition, kingPosition)
 
@@ -152,7 +171,20 @@ struct ChessBoard {
                 for col in 0..<8 {
                     if let piece = board[row][col], piece.color == color {
                         for blockPosition in attackPath {
-                            if piece.canMove(to: blockPosition, board: self) {
+                            // Simulate blocking
+                            let originalPiece = board[blockPosition.0][blockPosition.1]
+                            board[blockPosition.0][blockPosition.1] = piece
+                            board[row][col] = nil
+
+                            // is king still in attack
+                            let stillInCheck = isKingInCheck(for: color)
+
+                            // Undo the move
+                            board[row][col] = piece
+                            board[blockPosition.0][blockPosition.1] = originalPiece
+
+                            if !stillInCheck && piece.canMove(to: blockPosition, board: self) {
+                                print("No checkmate: Attack can be blocked.")
                                 return false // Blocking move found
                             }
                         }
@@ -161,9 +193,9 @@ struct ChessBoard {
             }
         }
 
-        return true // No escape, capture, or block possible → Checkmate
+        print("Checkmate detected: No escape, capture, or block possible.")
+        return true // No solution only means CHECK MAKTE
     }
-
 
     func getPathBetween(_ from: (Int, Int), _ to: (Int, Int)) -> [(Int, Int)] {
         var path: [(Int, Int)] = []
@@ -185,7 +217,6 @@ struct ChessBoard {
         return path
     }
 
-    
     private func findKing(for color: PieceColor) -> (Int, Int) {
         for row in 0..<8 {
             for col in 0..<8 {
@@ -196,7 +227,7 @@ struct ChessBoard {
         }
         fatalError("King not found on the board!")
     }
-    
+
     private mutating func canKingEscape(from position: (Int, Int), color: PieceColor) -> Bool {
         let (row, col) = position
         let directions = [
@@ -231,7 +262,6 @@ struct ChessBoard {
 
         return false // No escape moves available
     }
-
 
     private func printBoardSetup() {
         print("Chess Board:")
