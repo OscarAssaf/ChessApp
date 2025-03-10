@@ -11,22 +11,23 @@ import SwiftUI
 
 struct OpeningsView: View {
     var body: some View {
-        VStack {
-            Text("Chess Openings")
-                .font(.largeTitle)
-                .padding()
-            
-            
-            List {
-                Text("Ruy-Lopez")
-                Text("Sicilian Defense")
-                Text("French Defense")
-                Text("Caro-Kann Defense")
+        NavigationStack {
+            VStack {
+                Text("Chess Openings")
+                    .font(.largeTitle)
+                    .padding()
+                
+                List {
+                    NavigationLink(destination: SicilianDefenseView()) {
+                        Text("Sicilian Defense")
+                    }
+                        NavigationLink(destination: QueensGambitView()) {
+                            Text("Queen's gambit")
+                        }
+                    }
+                }
+                .navigationTitle("Openings")
             }
         }
     }
-}
 
-#Preview {
-    OpeningsView()
-}

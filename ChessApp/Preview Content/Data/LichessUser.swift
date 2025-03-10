@@ -12,6 +12,8 @@ struct LichessUser: Decodable {
     let username: String
     let perfs: Perfs
     let url: String
+    let playTime: PlayTime
+    let count: Count
 
     struct Perfs: Decodable {
         let bullet: GameStats
@@ -24,4 +26,16 @@ struct LichessUser: Decodable {
         let games: Int
         let rating: Int
     }
+    
+    
+    
+    struct PlayTime: Decodable {
+            let total: Int
+    }
+
+    struct Count: Decodable {
+    let all: Int
+    let win: Int
+    let loss: Int 
+        }
 }

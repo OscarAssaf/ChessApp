@@ -31,7 +31,7 @@ struct ChessBoard {
     }
 
     private mutating func placeMajorPieces(row: Int, color: PieceColor) {
-        let pieceOrder: [PieceType] = [.rook, .knight, .bishop, .queen, .king, .bishop, .knight, .rook]
+        let pieceOrder: [PieceType] = [.rook, .knight, .bishop, .king, .queen, .bishop, .knight, .rook]
         for col in 0..<8 {
             board[row][col] = ChessPiece(type: pieceOrder[col], color: color, position: (row, col))
         }
