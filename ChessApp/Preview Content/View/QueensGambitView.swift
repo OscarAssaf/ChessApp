@@ -17,7 +17,7 @@ struct QueensGambitView: View {
                     .font(.body)
                     .multilineTextAlignment(.leading)
                 
-                if let image = UIImage(named: "sicilian", in: Bundle.main, compatibleWith: nil) {
+                if let image = UIImage(named: "Gambit", in: Bundle.main, compatibleWith: nil) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
