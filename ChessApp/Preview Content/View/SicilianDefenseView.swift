@@ -28,10 +28,19 @@ struct SicilianDefenseView: View {
                         .foregroundColor(.red)
                         .padding(.vertical, 10)
                 }
+                Text("Move order:")
+                    .font(.headline)
+                    .padding(.top, 10)
+                VStack(alignment: .leading, spacing: 5){
+                    Text("White 1: Pawn from e2 to e4.")
+                    Text("Black 1: Pawn from c7 to c5.")
+                    Text("White 2: Knight from g1 to f3.")
+                    Text("Black 2: Pawn from d7 to d6.")
+                }
 
                 Text("Why this is good:")
                     .font(.headline)
-                    .padding(.top, 10)
+                    .padding(.top, 5)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("1. Control the d4 square with the c5 pawn.")
