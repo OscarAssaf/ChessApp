@@ -24,6 +24,9 @@ struct OpeningsView: View {
                         NavigationLink(destination: QueensGambitView()) {
                             Text("Queen's gambit")
                         }
+                    NavigationLink(destination: EnglishOpeningView()) {
+                        Text("English Opening")
+                    }
                     }
                 }
                 .navigationTitle("Openings")

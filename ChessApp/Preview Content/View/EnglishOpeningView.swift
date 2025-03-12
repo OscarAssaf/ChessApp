@@ -1,23 +1,24 @@
 //
-//  QueensGambitView.swift
+//  EnglishOpeningView.swift
 //  ChessApp
 //
-//  Created by Oscar Assaf on 2025-03-10.
+//  Created by Torik Runhall on 2025-03-12.
 //
+
 
 import Foundation
 import SwiftUI
 
-struct QueensGambitView: View {
+struct EnglishOpeningView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
 
-                Text("The Queen's Gambit is a popular 1.d4 opening that pushes for control of the center and frees the queen early.")
+                Text("The Sicilian Defense is one of the most popular and aggressive responses to 1.e4.")
                     .font(.body)
                     .multilineTextAlignment(.leading)
                 
-                if let image = UIImage(named: "Gambit", in: Bundle.main, compatibleWith: nil) {
+                if let image = UIImage(named: "English", in: Bundle.main, compatibleWith: nil) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
@@ -42,7 +43,7 @@ struct QueensGambitView: View {
             }
             .padding()
         }
-        .navigationTitle("Queen's Gambit")
+        .navigationTitle("English Opening")
     }
 }
 
