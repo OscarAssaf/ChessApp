@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D1A897A5-B6E5-4DCF-A493-6FA983516C3E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChessAppTests/ChessAppTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ChessBoardTests"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB - 6aeb8a3e08f4502"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChessAppTests.ChessBoardTests.testInitialBoardSetup() async throws -&gt; ()"
+                  moduleName = "ChessAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asos23ua/Documents/IosFinalProject/ChessAppTests/ChessAppTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13">
+               </Location>
+               <Location
+                  uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB - 44d216e8134c428f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for ChessAppTests.ChessBoardTests.testInitialBoardSetup() async throws -&gt; ()"
+                  moduleName = "ChessAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asos23ua/Documents/IosFinalProject/ChessAppTests/ChessAppTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

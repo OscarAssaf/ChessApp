@@ -13,7 +13,6 @@ struct ChessBoardTests {
     @Test func testInitialBoardSetup() async throws {
         let board = ChessBoard()
         
-    
         for col in 0..<8 {
             #expect(board.board[1][col]?.type == .pawn)
             #expect(board.board[1][col]?.color == .black)
@@ -21,13 +20,12 @@ struct ChessBoardTests {
             #expect(board.board[6][col]?.color == .white)
         }
         
-   
         #expect(board.board[0][0]?.type == .rook)
         #expect(board.board[0][7]?.type == .rook)
         #expect(board.board[7][0]?.type == .rook)
         #expect(board.board[7][7]?.type == .rook)
     }
-
+    
     @Test func testValidPawnMove() async throws {
         var board = ChessBoard()
         
@@ -63,16 +61,36 @@ struct ChessBoardTests {
         #expect(!moveSuccess)
         #expect(board.board[7][1]?.type == .knight)
     }
-
-    @Test func testCheckDetection() async throws {
+    
+    @Test func testRookMovementBlocked() async throws {
         var board = ChessBoard()
         
+        let moveBlocked = board.movePiece(from: (7, 0), to: (5, 0))
+        #expect(!moveBlocked)
+    }
     
+    @Test func testCheckScenario() async throws {
+        var board = ChessBoard()
+        
         _ = board.movePiece(from: (6, 5), to: (5, 5))
         _ = board.movePiece(from: (1, 4), to: (3, 4))
-        _ = board.movePiece(from: (6, 6), to: (4, 6))
-        _ = board.movePiece(from: (0, 3), to: (4, 7))
+        _ = board.movePiece(from: (7, 3), to: (3, 7))
         
-        #expect(board.isKingInCheck(for: .white))
+        let isBlackInCheck = board.isKingInCheck(for: .black)
+        #expect(isBlackInCheck)
+    }
+    
+    @Test func testCheckmateScenario() async throws {
+        var board = ChessBoard()
+        
+        board.board[0][4] = nil
+        board.board[1][5] = nil
+        board.board[1][6] = nil
+        
+        _ = board.movePiece(from: (7, 3), to: (3, 7))
+        _ = board.movePiece(from: (6, 5), to: (5, 5))
+        
+        let isCheckmate = board.isCheckmate(for: .black)
+        #expect(isCheckmate)
     }
 }
