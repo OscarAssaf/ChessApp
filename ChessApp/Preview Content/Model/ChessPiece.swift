@@ -5,6 +5,8 @@
 //  Created by Oscar on 2025-02-18.
 //
 
+
+// Sources: https://github.com/jaredcassoutt/chess_swiftui 
 import Foundation
 
 enum PieceType: String {
@@ -205,8 +207,5 @@ struct ChessPiece {
 
         return true
     }
-
-
-
 
 }

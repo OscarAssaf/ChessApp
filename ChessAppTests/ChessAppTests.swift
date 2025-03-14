@@ -45,12 +45,12 @@ struct ChessBoardTests {
     }
     @Test func testTurnManagement() async throws {
         var board = ChessBoard()
-        // White moves first
+        
         let moveSuccess1 = board.movePiece(from: (6, 4), to: (5, 4))
         #expect(moveSuccess1)
         #expect(board.currentTurn == .black)
         
-        // Black moves next
+    
         let moveSuccess2 = board.movePiece(from: (1, 4), to: (3, 4))
         #expect(moveSuccess2)
         #expect(board.currentTurn == .white)
@@ -89,8 +89,7 @@ struct ChessBoardTests {
         let moveBlocked = board.movePiece(from: (7, 0), to: (5, 0))
         #expect(!moveBlocked)
     }
-    
-   
+
     
     // 10. Test Invalid Bishop Move (Blocked)
     @Test func testInvalidBishopMoveBlocked() async throws {
@@ -100,9 +99,21 @@ struct ChessBoardTests {
         #expect(board.board[7][2]?.type == .bishop)
     }
     
- 
+    @Test func Testingking () async throws {
+        
+        
+        var board = ChessBoard()
+        
+        _ = board.movePiece(from: (6, 3), to: (5, 3))
+        _ = board.movePiece(from: (1, 3), to: (2, 3))
+        _ = board.movePiece(from: (7, 3), to: (6, 3))
+
+        
+        #expect(board.board[6][3]?.color == .white)
+        #expect(board.board[6][3]?.type == .king)
+    }
+   
     
-    //invalid moves
     @Test func testMoveToSamePosition() async throws {
         var board = ChessBoard()
         let moveSuccess = board.movePiece(from: (7, 0), to: (7, 0))
@@ -115,18 +126,37 @@ struct ChessBoardTests {
         #expect(!moveSuccess)
     }
     
-    
-    
-    @Test func testKingMovement() async throws {
-        var board = ChessBoard()
-        
-       
+    @Test func testTakePawn() async throws{
+            var board = ChessBoard()
+            _ = board.movePiece(from: (6, 3), to: (4, 3))
+            _ = board.movePiece(from: (1, 4), to: (3, 4))
+            _ = board.movePiece(from: (4, 3), to: (3, 4))
 
-        _ = board.movePiece(from: (6, 3), to: (5, 3))
-        _ = board.movePiece(from: (7, 3), to: (6,3))
-        #expect(board.board[6][3]?.type == .king)
-        #expect(board.board[6][3]?.color == .white)
-    }
+            #expect(board.board[3][4]?.color == .white)
+            #expect(board.board[4][3] == nil)
+        }
+        @Test func testCheckScenario() async throws {
+            var board = ChessBoard()
+            _ = board.movePiece(from: (6, 4), to: (4, 4))
+            _ = board.movePiece(from: (1, 5), to: (3, 5))
+            _ = board.movePiece(from: (6, 5), to: (4, 5))
+            _ = board.movePiece(from: (0, 4), to: (3, 7))
+
+            let isWhiteInCheck = board.isKingInCheck(for: .white)
+            #expect(isWhiteInCheck)
+        }
+        @Test func testCHeckmateScenario() async throws {
+            var board = ChessBoard()
+            _ = board.movePiece(from: (6, 2), to: (5, 2))
+            _ = board.movePiece(from: (1, 3), to: (2, 3))
+            _ = board.movePiece(from: (6, 1), to: (4, 1))
+            _ = board.movePiece(from: (0, 4), to: (4, 0))
+
+            let isCheckmate = board.isCheckmate(for: .white)
+            #expect(isCheckmate)
+        }
     
+
     
+
 }

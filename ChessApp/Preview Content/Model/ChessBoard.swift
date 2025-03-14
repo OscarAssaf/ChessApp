@@ -5,6 +5,9 @@
 //  Created by Oscar on 2025-02-18.
 //
 
+
+// sources: https://github.com/jaredcassoutt/chess_swiftui
+
 import Foundation
 
 struct ChessBoard {
@@ -92,6 +95,8 @@ struct ChessBoard {
         return false
     }
 
+    
+    // Used chatgpt for inspirationg as well as the above statement and this github when it came to implementing the whole way of checking for checkmate & check https://chatgpt.com/share/67d42eae-5ccc-8005-8b19-61679ca9f4a7 and https://github.com/jaredcassoutt/chess_swiftui 
     func isKingInCheck(for color: PieceColor) -> Bool {
         let kingPosition = findKing(for: color)
         for row in 0..<8 {

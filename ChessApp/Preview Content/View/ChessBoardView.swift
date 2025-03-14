@@ -13,6 +13,8 @@ struct ChessBoardView: View {
     @Bindable var viewModel: ChessGameViewModel
     
     @State private var selectedPiecePosition: (Int, Int)? = nil
+    //https://medium.com/@jaredcassoutt/creating-a-simple-chess-game-in-swiftui-614c5379e074
+    //used a lot for the logic of building the board itself and what to think when ti comes to the logic
     
     var body: some View {
         GeometryReader { geometry in
