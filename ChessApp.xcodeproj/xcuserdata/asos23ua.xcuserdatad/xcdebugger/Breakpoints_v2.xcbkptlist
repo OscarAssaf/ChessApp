@@ -7,47 +7,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB"
+            uuid = "8BEB1207-1E85-4C8B-9CBA-EE0A3987F47F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChessAppTests/ChessAppTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "testValidRookMove()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EBC3B01-5BA1-4A0C-838B-2C320AD7D950"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChessAppTests/ChessAppTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "ChessBoardTests"
-            landmarkType = "14">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "testKingMovement()"
+            landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB - 6aeb8a3e08f4502"
+                  uuid = "9EBC3B01-5BA1-4A0C-838B-2C320AD7D950 - 592a1b3888766afb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ChessAppTests.ChessBoardTests.testInitialBoardSetup() async throws -&gt; ()"
+                  symbolName = "ChessAppTests.ChessBoardTests.testKingMovement() async throws -&gt; ()"
                   moduleName = "ChessAppTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/asos23ua/Documents/IosFinalProject/ChessAppTests/ChessAppTests.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13">
+                  startingLineNumber = "120"
+                  endingLineNumber = "120">
                </Location>
                <Location
-                  uuid = "18BCFF86-2A5B-4124-963C-0B522E0DB5CB - 44d216e8134c428f"
+                  uuid = "9EBC3B01-5BA1-4A0C-838B-2C320AD7D950 - 8ce1bbdc30e60569"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for ChessAppTests.ChessBoardTests.testInitialBoardSetup() async throws -&gt; ()"
+                  symbolName = "(1) suspend resume partial function for ChessAppTests.ChessBoardTests.testKingMovement() async throws -&gt; ()"
                   moduleName = "ChessAppTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/asos23ua/Documents/IosFinalProject/ChessAppTests/ChessAppTests.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13">
+                  startingLineNumber = "120"
+                  endingLineNumber = "120">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05916C8B-5527-4202-96F2-327FC75F6B50"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChessAppTests/ChessAppTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "ChessBoardTests"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

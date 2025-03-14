@@ -42,9 +42,6 @@ struct ChessPiece {
             return isValidQueenMove(to: newPosition, board: board)
         case .king:
             return isValidKingMove(to: newPosition, board: board)
-    
-        default:
-            return false 
         }
     }
 

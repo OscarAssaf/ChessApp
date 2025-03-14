@@ -13,11 +13,11 @@ struct ChessBoardView: View {
     @Bindable var viewModel: ChessGameViewModel
     
     @State private var selectedPiecePosition: (Int, Int)? = nil
-
+    
     var body: some View {
         GeometryReader { geometry in
             let squareSize = min(geometry.size.width, geometry.size.height) / 8
-
+            
             VStack(spacing: 0) {
                 ForEach((0..<8).reversed(), id: \.self) { row in
                     HStack(spacing: 0) {
@@ -33,7 +33,7 @@ struct ChessBoardView: View {
                                     .onTapGesture {
                                         handleTap(at: position, piece: piece)
                                     }
-
+                                
                                 if let piece = piece {
                                     Text(ChessConstants.pieceSymbols[piece.type] ?? "?")
                                         .font(.system(size: squareSize * 0.7))
@@ -62,7 +62,7 @@ struct ChessBoardView: View {
         }
         return false
     }
-
+    
     private func handleTap(at position: (Int, Int), piece: ChessPiece?) {
         if let selectedPiece = selectedPiecePosition {
             // Attempt to move the piece

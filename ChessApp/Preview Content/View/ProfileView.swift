@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @State private var username: String = ""
     @State private var lichessViewModel = LichessViewModel()
-
+    
     var body: some View {
         VStack {
             TextField("Enter Lichess Username", text: $username)
@@ -22,7 +22,7 @@ struct ProfileView: View {
                         .font(.title2)
                         .bold()
                         .padding(.bottom, 10)
-
+                    
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Game Stats").font(.headline)
                         Divider()
@@ -34,7 +34,7 @@ struct ProfileView: View {
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
-
+                    
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Overall Stats").font(.headline)
                         Divider()
@@ -55,7 +55,7 @@ struct ProfileView: View {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
-
+            
             Button("Fetch Profile") {
                 Task {
                     await lichessViewModel.fetchUser(username: username)
@@ -65,16 +65,16 @@ struct ProfileView: View {
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(10)
-
+            
         }
         .padding()
     }
-
+    
     // Helper function to convert seconds to hours
     private func secondsToHours(_ seconds: Int) -> Double {
         return Double(seconds) / 3600.0
     }
-
+    
     // Helper function to calculate win/lose ratio
     private func winLoseRatio(wins: Int, losses: Int) -> Double {
         guard losses > 0 else { return Double(wins) }

@@ -18,7 +18,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Game", systemImage: "gamecontroller.fill")
             }
-
+            
             NavigationStack {
                 OpeningsView()
                     .navigationTitle("Openings")
@@ -26,7 +26,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Openings", systemImage: "book")
             }
-
+            
             NavigationStack {
                 ProfileView()
                     .navigationTitle("Profile")
