@@ -12,7 +12,7 @@ struct SicilianDefenseView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-
+                
                 Text("The Sicilian Defense is one of the most popular and aggressive responses to 1.e4.")
                     .font(.body)
                     .multilineTextAlignment(.leading)
@@ -37,11 +37,11 @@ struct SicilianDefenseView: View {
                     Text("White 2: Knight from g1 to f3.")
                     Text("Black 2: Pawn from d7 to d6.")
                 }
-
+                
                 Text("Why this is good:")
                     .font(.headline)
                     .padding(.top, 5)
-
+                
                 VStack(alignment: .leading, spacing: 10) {
                     Text("1. Control the d4 square with the c5 pawn.")
                     Text("2. Develop your pieces quickly, especially the knights and bishops.")

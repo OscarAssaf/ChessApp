@@ -15,11 +15,11 @@ class ChessGameViewModel {
     var board = ChessBoard()
     var showCheckmateAlert = false
     var checkmateWinner: PieceColor? = nil
-
+    
     func getPiece(at position: (Int, Int)) -> ChessPiece? {
         return board.board[position.0][position.1]
     }
-
+    
     func movePiece(from: (Int, Int), to: (Int, Int)) -> Bool {
         let moveSuccessful = board.movePiece(from: from, to: to)
         
@@ -33,17 +33,17 @@ class ChessGameViewModel {
         
         return moveSuccessful
     }
-
+    
     func resetGame() {
         board = ChessBoard() // Reset the board
         showCheckmateAlert = false
         checkmateWinner = nil
     }
-
+    
     var currentTurn: PieceColor {
         return board.currentTurn
     }
-
+    
     func isCheckmate(for color: PieceColor) -> Bool {
         return board.isCheckmate(for: color)
     }

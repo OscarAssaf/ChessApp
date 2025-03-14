@@ -10,10 +10,10 @@ import SwiftUI
 
 struct GameView: View {
     @State private var viewModel = ChessGameViewModel()
-
+    
     var body: some View {
         VStack {
-
+            
             Text("Turn: \(viewModel.currentTurn == .white ? "White" : "Black")")
                 .font(.headline)
             

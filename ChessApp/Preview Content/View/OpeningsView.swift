@@ -21,16 +21,16 @@ struct OpeningsView: View {
                     NavigationLink(destination: SicilianDefenseView()) {
                         Text("Sicilian Defense")
                     }
-                        NavigationLink(destination: QueensGambitView()) {
-                            Text("Queen's gambit")
-                        }
+                    NavigationLink(destination: QueensGambitView()) {
+                        Text("Queen's gambit")
+                    }
                     NavigationLink(destination: EnglishOpeningView()) {
                         Text("English Opening")
                     }
-                    }
                 }
-                .navigationTitle("Openings")
             }
+            .navigationTitle("Openings")
         }
     }
+}
 
